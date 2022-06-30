@@ -1,6 +1,17 @@
 public class Radio {
     public int currentStation;
+    public int maxStation;
+    public int maxVolume;
 
+    public Radio() {
+        maxVolume = 100;
+        maxStation = 9;
+    }
+
+    public Radio(int stationsCount, int volumeCount) {
+        maxStation = stationsCount - 1;
+        maxVolume = volumeCount - 1;
+    }
 
     public int getCurrentStation() {
         return currentStation;
@@ -10,20 +21,19 @@ public class Radio {
         if (newCurrentStation < 0) {
             return;
         }
-        if (newCurrentStation > 9) {
+        if (newCurrentStation > maxStation) {
             return;
         }
         currentStation = newCurrentStation;
     }
 
-
     public void prev() {
         if (currentStation > 0) {
-            currentStation = currentStation - 1;
+            currentStation--;
             return;
         }
         if (currentStation == 0) {
-            currentStation = 9;
+            currentStation = maxStation;
         }
     }
 
@@ -37,34 +47,32 @@ public class Radio {
         if (newCurrentVolume < 0) {
             return;
         }
-        if (newCurrentVolume > 10) {
+        if (newCurrentVolume > maxVolume) {
             return;
         }
         currentVolume = newCurrentVolume;
     }
 
     public void increaseVolume() {
-        if (currentVolume < 10) {
-            currentVolume = currentVolume + 1;
-            return;
+        if (currentVolume < maxVolume) {
+            currentVolume++;
         }
 
     }
 
     public void decreaseVolume() {
         if (currentVolume > 0) {
-            currentVolume = currentVolume - 1;
-            return;
+            currentVolume--;
         }
 
     }
 
     public void next() {
-        if (currentStation < 9) {
+        if (currentStation < maxStation) {
             currentStation++;
             return;
         }
-        if (currentStation == 9) {
+        if (currentStation == maxStation) {
             currentStation = 0;
         }
     }
