@@ -381,11 +381,9 @@ public class RadioTest {
     }
 
     @Test
-    public void GetMaxStationThis() {
-
-        int maxStation = 100;
-
-        Radio rad = new Radio(maxStation);
-        assertEquals(rad.getMaxStation(), maxStation);
+    public void StationCount() {
+        Radio rad = new Radio(20);
+        rad.setCurrentStation(15);
+        assertEquals(15, rad.getCurrentStation());
     }
 }
